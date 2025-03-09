@@ -1,0 +1,193 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+    z-index: 1000;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Prevent content from being hidden behind the navbar */
+body {
+    padding-top: 80px;
+}
+
+.navbar .logo {
+    width: 120px;
+}
+
+.navbar-menu {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    color: #49557E;
+    font-size: 18px;
+}
+
+.navbar-menu .active {
+    padding-bottom: 2px;
+    border-bottom: 2px solid #49557E;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Adjusted spacing */
+}
+
+.navbar-search-icon {
+    position: relative;
+}
+
+.navbar-search-icon .dot {
+    position: absolute;
+    min-width: 8px;
+    min-height: 10px;
+    background-color: #FF4C24;
+    border-radius: 5px;
+    top: -8px;
+    right: -8px;
+}
+
+.navbar-right button {
+    background: transparent;
+    font-size: 16px;
+    color: #49557E;
+    border: 1px solid #FF4C24;
+    padding: 10px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.navbar-right button:hover {
+    background: #fff4f2;
+}
+
+/* Ensuring Admin Login button matches Sign In */
+.navbar-right .admin-login {
+    background: transparent;
+    font-size: 16px;
+    color: #49557E;
+    border: 1px solid #FF4C24;
+    padding: 10px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.navbar-right .admin-login:hover {
+    background: #fff4f2;
+}
+
+.navbar-profile {
+    position: relative;
+}
+
+.navbar-profile-dropdown {
+    position: absolute;
+    display: none;
+    right: 0;
+    z-index: 1;
+}
+
+.navbar-profile-dropdown li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.navbar-profile-dropdown img {
+    width: 20px;
+}
+
+.navbar-profile-dropdown li:hover {
+    color: #FF4C24;
+}
+
+.navbar-profile:hover .navbar-profile-dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #fff2ef;
+    padding: 12px 25px;
+    border-radius: 4px;
+    border: 1px solid tomato;
+    outline: 2px solid white;
+    list-style: none;
+}
+
+.navbar-profile hr {
+    background-color: gray;
+    height: 1px;
+    border: none;
+}
+
+@media (max-width: 750px) {
+    .navbar-menu {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 70%;
+        height: 100vh;
+        background: white;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        padding-top: 60px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        list-style: none;
+        transition: left 0.4s ease-in-out;
+        z-index: 999;
+    }
+
+    .navbar-menu.show {
+        left: 0;
+    }
+
+    .navbar-menu a {
+        padding: 10px 20px;
+        font-size: 18px;
+        color: #49557E;
+        text-align: left;
+        display: block;
+        transition: background 0.3s ease;
+    }
+
+    .navbar-menu a:hover {
+        background: #f8f8f8;
+    }
+
+    .navbar-right {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .navbar-right button,
+    .navbar-right .admin-login {
+        font-size: 15px;
+        padding: 7px 20px;
+    }
+
+    /* Hamburger Menu */
+    .hamburger {
+        display: block;
+        cursor: pointer;
+        font-size: 24px;
+        color: #49557E;
+        z-index: 1000;
+    }
+}
+
+/* Hide hamburger icon in desktop view */
+@media (min-width: 751px) {
+    .hamburger {
+        display: none;
+    }
+}
