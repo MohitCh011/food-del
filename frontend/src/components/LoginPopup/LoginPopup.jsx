@@ -34,6 +34,9 @@ const LoginPopup = ({ setShowLogin }) => {
         }
         const response = await axios.post(new_url, data);
         if (response.data.success) {
+            if(response.data.redirectUrl){
+                window.location.href = response.data.redirectUrl;
+            }
             setToken(response.data.token)
             localStorage.setItem("token", response.data.token)
             loadCartData({token:response.data.token})
