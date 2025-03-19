@@ -10,9 +10,15 @@ const Footer = () => {
             <img src={assets.logo} alt="" />
             <p>Discover the freshest avocados delivered right to your doorstep! We've been your go-to source for creamy, delicious avocados since day one. From farm to table, we ensure quality and flavor in every bite. Experience the perfect avocado, every time.</p>
             <div className="footer-social-icons">
-                <img src={assets.facebook_icon} alt="" />
-                <img src={assets.twitter_icon} alt="" />
-                <img src={assets.linkedin_icon} alt="" />
+                <a href="https://www.facebook.com/login" target="_blank" rel="noopener noreferrer">
+                    <img src={assets.facebook_icon} alt="Facebook" />
+                </a>
+                <a href="https://x.com/Mohit68251475" target="_blank" rel="noopener noreferrer">
+                    <img src={assets.twitter_icon} alt="Twitter" />
+                </a>
+                <a href="https://www.linkedin.com/in/mohit-ch-a87282272/" target="_blank" rel="noopener noreferrer">
+                    <img src={assets.linkedin_icon} alt="LinkedIn" />
+                </a>
             </div>
         </div>
         <div className="footer-content-center">
@@ -33,7 +39,7 @@ const Footer = () => {
         </div>
       </div>
       <hr />
-      <p className="footer-copyright"> All Right Reserved to PVPSIT.</p>
+      <p className="footer-copyright"> All Rights Reserved to PVPSIT.</p>
     </div>
   )
 }
