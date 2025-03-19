@@ -49,20 +49,30 @@
 .footer-social-icons img {
     width: 40px;
     transition: transform 0.3s, filter 0.3s;
+    cursor: pointer;
 }
 
+/* Hover Effect */
 .footer-social-icons img:hover {
     transform: scale(1.1);
     filter: brightness(1.2);
 }
 
+/* Click Effect */
+.footer-social-icons img:active {
+    animation: spin 0.6s ease;
+}
+
+/* Spin Animation */
+@keyframes spin {
+    0% { transform: scale(1) rotateY(0deg); }
+    50% { transform: scale(1.2) rotateY(180deg); }
+    100% { transform: scale(1) rotateY(360deg); }
+}
+
 .footer-social-icons {
     display: flex;
     gap: 15px;
-}
-
-.footer li {
-    cursor: pointer;
 }
 
 .footer hr {
