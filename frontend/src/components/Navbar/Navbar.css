@@ -1,3 +1,4 @@
+/* General Navbar Styling */
 .navbar {
     position: fixed;
     top: 0;
@@ -11,33 +12,20 @@
     align-items: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-.sign-in {
-    padding: 8px 16px;
-    background-color: #FF8C00; /* Adjust the color as needed */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .sign-in:hover {
-    background-color: #FF7000; /* Slightly darker shade for hover effect */
-  }
-  
-/* Prevent content from being hidden behind the navbar */
+
 body {
     padding-top: 80px;
 }
 
+/* Logo Styling */
 .navbar .logo {
-    width: 80px;         /* Reduced from 120px to 80px */
-    height: 60px;        /* Reduced from 80px to 60px */
-    max-width: 15vw;     /* Reduced from 20vw to 15vw */
-    max-height: 8vh;     /* Reduced from 10vh to 8vh */
+    width: 80px;
+    height: 60px;
+    max-width: 15vw;
+    max-height: 8vh;
 }
 
-
+/* Navbar Menu Styling */
 .navbar-menu {
     display: flex;
     list-style: none;
@@ -51,43 +39,29 @@ body {
     border-bottom: 2px solid #49557E;
 }
 
+/* Sign In Button */
+.sign-in {
+    padding: 8px 16px;
+    background-color: #FF8C00;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.sign-in:hover {
+    background-color: #FF7000;
+}
+
+/* Navbar Right Section Styling */
 .navbar-right {
     display: flex;
     align-items: center;
-    gap: 20px; /* Adjusted spacing */
+    gap: 20px;
 }
 
-.navbar-search-icon {
-    position: relative;
-}
-
-.navbar-search-icon .dot {
-    position: absolute;
-    min-width: 8px;
-    min-height: 10px;
-    background-color: #FF4C24;
-    border-radius: 5px;
-    top: -8px;
-    right: -8px;
-}
-
-.navbar-right button {
-    background: transparent;
-    font-size: 16px;
-    color: #49557E;
-    border: 1px solid #15981c;
-    padding: 10px 30px;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.navbar-right button:hover {
-    background: #88e085;
-}
-
-/* Ensuring Admin Login button matches Sign In */
-.navbar-right .admin-login {
+.navbar-right button, .navbar-right .admin-login {
     background: transparent;
     font-size: 16px;
     color: #49557E;
@@ -98,54 +72,66 @@ body {
     transition: 0.3s;
 }
 
+.navbar-right button:hover {
+    background: #88e085;
+}
+
 .navbar-right .admin-login:hover {
     background: #fff4f2;
 }
 
+/* Profile Dropdown Styling */
 .navbar-profile {
     position: relative;
+    cursor: pointer;
+}
+
+.navbar-profile img {
+    transition: transform 0.2s;
+}
+
+.navbar-profile:hover img {
+    transform: scale(1.05);
 }
 
 .navbar-profile-dropdown {
     position: absolute;
-    display: none;
+    top: 110%;
     right: 0;
-    z-index: 1;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 150px;
+    padding: 10px 0;
+    display: none;
+    transition: opacity 0.3s;
+    z-index: 10;
+}
+
+.navbar-profile:hover .navbar-profile-dropdown {
+    display: block;
 }
 
 .navbar-profile-dropdown li {
+    padding: 10px 15px;
     display: flex;
     align-items: center;
     gap: 10px;
     cursor: pointer;
-}
-
-.navbar-profile-dropdown img {
-    width: 20px;
+    transition: background-color 0.3s;
 }
 
 .navbar-profile-dropdown li:hover {
-    color: #88e085;
+    background-color: #f0f0f0;
 }
 
-.navbar-profile:hover .navbar-profile-dropdown {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    background-color: #fff2ef;
-    padding: 12px 25px;
-    border-radius: 4px;
-    border: 1px solid rgb(84, 216, 84);
-    outline: 2px solid white;
-    list-style: none;
-}
-
-.navbar-profile hr {
-    background-color: gray;
-    height: 1px;
+.navbar-profile-dropdown hr {
+    margin: 5px 0;
     border: none;
+    border-top: 1px solid #ddd;
 }
 
+/* Responsive Navbar Styling */
 @media (max-width: 750px) {
     .navbar-menu {
         position: fixed;
@@ -154,31 +140,15 @@ body {
         width: 70%;
         height: 100vh;
         background: white;
-        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
         padding-top: 60px;
         display: flex;
         flex-direction: column;
         gap: 20px;
-        list-style: none;
-        transition: left 0.4s ease-in-out;
-        z-index: 999;
+        transition: left 0.4s;
     }
 
     .navbar-menu.show {
         left: 0;
-    }
-
-    .navbar-menu a {
-        padding: 10px 20px;
-        font-size: 18px;
-        color: #49557E;
-        text-align: left;
-        display: block;
-        transition: background 0.3s ease;
-    }
-
-    .navbar-menu a:hover {
-        background: #f8f8f8;
     }
 
     .navbar-right {
@@ -186,33 +156,25 @@ body {
         flex-wrap: wrap;
     }
 
-    .navbar-right button,
-    .navbar-right .admin-login {
-        font-size: 15px;
-        padding: 7px 20px;
-    }
-
-    /* Hamburger Menu */
     .hamburger {
         display: block;
         cursor: pointer;
         font-size: 24px;
         color: #49557E;
-        z-index: 1000;
     }
 }
 
-/* Hide hamburger icon in desktop view */
 @media (min-width: 751px) {
     .hamburger {
         display: none;
     }
-}/* Search Bar Styling */
+}
+
+/* Search Box Styling */
 .search-container {
     position: relative;
 }
 
-/* Desktop View */
 .search-box {
     position: absolute;
     top: 50%;
@@ -225,7 +187,6 @@ body {
     border: 1px solid #ddd;
     border-radius: 30px;
     padding: 5px 10px;
-    transition: all 0.3s ease-in-out;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -235,48 +196,41 @@ body {
     outline: none;
     border-radius: 20px;
     width: 150px;
-    transition: width 0.3s ease-in-out;
 }
 
 .search-box button {
     padding: 5px 10px;
-    margin-left: 5px;
-    border: none;
     background-color: #88e085;
     color: white;
-    cursor: pointer;
+    border: none;
     border-radius: 20px;
-    transition: background-color 0.3s;
+    cursor: pointer;
 }
 
 .search-box button:hover {
-    background-color: #88e085;
+    background-color: #76c872;
 }
 
 .search-box input:focus {
     width: 200px;
 }
 
-/* Mobile View */
 @media (max-width: 750px) {
     .search-box {
-        position: fixed; /* Keep it visible and easy to use */
+        position: fixed;
         top: 60px;
         left: 50%;
         transform: translateX(-50%);
         width: 90%;
         border-radius: 20px;
-        z-index: 1000;
     }
 
     .search-box input {
         width: 100%;
         padding: 10px;
-        border-radius: 20px;
     }
 
     .search-box button {
         padding: 8px 12px;
-        border-radius: 20px;
     }
 }
