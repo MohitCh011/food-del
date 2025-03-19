@@ -16,18 +16,23 @@ const App = () => {
       <Navbar />
       <hr />
       
-
+      <div className="main-content">
         <Sidebar />
-        <Routes>
-          <Route path="/add" element={<Add />} />
-          <Route path="/list" element={<List />} />
-          <Route path="/orders" element={<Orders />} />
-        </Routes>
-        <div className="app-content">
-        <div className="parent">
-          <div className="div4">4</div>
-          <div className="div5">5</div>
-          <div className="div6">6</div>
+        
+        <div className="content-area">
+          <Routes>
+            <Route path="/add" element={<Add />} />
+            <Route path="/list" element={<List />} />
+            <Route path="/orders" element={<Orders />} />
+          </Routes>
+
+          <div className="app-content">
+            <div className="parent">
+              <div className="div4">4</div>
+              <div className="div5">5</div>
+              <div className="div6">6</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
