@@ -40,7 +40,13 @@ const Navbar = ({ setShowLogin }) => {
   }, [isSearchOpen]);
 
   const scrollToSection = (sectionId) => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => {
+        section.focus();
+      }, 500);
+    }
   };
 
   const handleHomeClick = () => {
@@ -48,10 +54,6 @@ const Navbar = ({ setShowLogin }) => {
     setIsMobileMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
     navigate('/');
-  };
-
-  const handleScrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -63,10 +65,10 @@ const Navbar = ({ setShowLogin }) => {
       </div>
 
       <ul className={`navbar-menu ${isMobileMenuOpen ? 'show' : ''}`}>
-        <span onClick={handleHomeClick} className={`${menu === "home" ? "active" : ""}`}>home</span>
-        <span onClick={() => { scrollToSection('explore-menu'); setMenu("menu"); setIsMobileMenuOpen(false); }} className={`${menu === "menu" ? "active" : ""}`}>menu</span>
-        <span onClick={() => { scrollToSection('app-download'); setMenu("mob-app"); setIsMobileMenuOpen(false); }} className={`${menu === "mob-app" ? "active" : ""}`}>mobile app</span>
-        <span onClick={() => { scrollToSection('footer'); setMenu("contact"); setIsMobileMenuOpen(false); }} className={`${menu === "contact" ? "active" : ""}`}>contact us</span>
+        <span onClick={handleHomeClick} className={`${menu === "home" ? "active pointer" : "pointer"}`}>home</span>
+        <span onClick={() => { scrollToSection('explore-menu'); setMenu("menu"); setIsMobileMenuOpen(false); }} className={`${menu === "menu" ? "active pointer" : "pointer"}`}>menu</span>
+        <span onClick={() => { scrollToSection('app-download'); setMenu("mob-app"); setIsMobileMenuOpen(false); }} className={`${menu === "mob-app" ? "active pointer" : "pointer"}`}>mobile app</span>
+        <span onClick={() => { scrollToSection('footer'); setMenu("contact"); setIsMobileMenuOpen(false); }} className={`${menu === "contact" ? "active pointer" : "pointer"}`}>contact us</span>
       </ul>
 
       <div className="navbar-right">
@@ -90,7 +92,7 @@ const Navbar = ({ setShowLogin }) => {
           )}
         </div>
 
-        <Link to='/cart' className='navbar-search-icon' onClick={handleScrollToTop}>
+        <Link to='/cart' className='navbar-search-icon'>
           <img src={assets.basket_icon} alt="Cart" />
           <div className={getTotalCartAmount() > 0 ? "dot" : ""}></div>
         </Link>
