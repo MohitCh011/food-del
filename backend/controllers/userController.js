@@ -32,7 +32,7 @@ const loginUser = async (req, res) => {
             return res.json({ 
                 success: true, 
                 token, 
-                redirectUrl: "https://food-del-seven-kohl.vercel.app/add" // Replace with actual URL
+                redirectUrl: "https://food-del-seven-kohl.vercel.app/" // Replace with actual URL
                 
             });
             
