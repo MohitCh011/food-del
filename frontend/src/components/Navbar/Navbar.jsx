@@ -65,11 +65,36 @@ const Navbar = ({ setShowLogin }) => {
       </div>
 
       <ul className={`navbar-menu ${isMobileMenuOpen ? 'show' : ''}`}>
-        <span onClick={handleHomeClick} className={`${menu === "home" ? "active pointer" : "pointer"}`}>home</span>
-        <span onClick={() => { scrollToSection('explore-menu'); setMenu("menu"); setIsMobileMenuOpen(false); }} className={`${menu === "menu" ? "active pointer" : "pointer"}`}>menu</span>
-        <span onClick={() => { scrollToSection('app-download'); setMenu("mob-app"); setIsMobileMenuOpen(false); }} className={`${menu === "mob-app" ? "active pointer" : "pointer"}`}>mobile app</span>
-        <span onClick={() => { scrollToSection('footer'); setMenu("contact"); setIsMobileMenuOpen(false); }} className={`${menu === "contact" ? "active pointer" : "pointer"}`}>contact us</span>
-      </ul>
+  <span 
+    onClick={handleHomeClick} 
+    className={`${menu === "home" ? "active" : ""} pointer`} 
+    style={{ cursor: 'pointer' }}
+  >
+    home
+  </span>
+  <span 
+    onClick={() => { scrollToSection('explore-menu'); setMenu("menu"); setIsMobileMenuOpen(false); }} 
+    className={`${menu === "menu" ? "active" : ""} pointer`} 
+    style={{ cursor: 'pointer' }}
+  >
+    menu
+  </span>
+  <span 
+    onClick={() => { scrollToSection('app-download'); setMenu("mob-app"); setIsMobileMenuOpen(false); }} 
+    className={`${menu === "mob-app" ? "active" : ""} pointer`} 
+    style={{ cursor: 'pointer' }}
+  >
+    mobile app
+  </span>
+  <span 
+    onClick={() => { scrollToSection('footer'); setMenu("contact"); setIsMobileMenuOpen(false); }} 
+    className={`${menu === "contact" ? "active" : ""} pointer`} 
+    style={{ cursor: 'pointer' }}
+  >
+    contact us
+  </span>
+</ul>
+
 
       <div className="navbar-right">
         <div className="search-container">
