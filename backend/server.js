@@ -15,7 +15,7 @@ const port = process.env.PORT || 4000;
 app.use(express.json());
 
 // CORS configuration
-const allowedOrigins = ["https://food-del-t11.vercel.app","https://food-del-seven-kohl.vercel.app","http://localhost:5174","http://localhost:4000"];
+const allowedOrigins = ["https://food-del-t11.vercel.app","https://food-del-seven-kohl.vercel.app/","http://localhost:5174","http://localhost:4000"];
 
 app.use(
     cors({
