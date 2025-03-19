@@ -23,3 +23,78 @@
         display: none;
     }
 }
+.modal-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.form-heading {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: #333;
+}
+/* For larger screens, we can slightly increase the size */
+@media (min-width: 768px) {
+    .modal-content {
+        width: 80%;
+        max-width: 500px;
+    }
+}
+
+/* For very large screens */
+@media (min-width: 1200px) {
+    .modal-content {
+        width: 60%;
+        max-width: 600px;
+    }
+}
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        max-width: 350px;
+    }
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.modal-content input {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 0.375rem;
+    font-size: 1rem;
+}
+
+.modal-content input:focus {
+    outline: none;
+    border-color: #23c071;
+    box-shadow: 0 0 0 0.2rem rgba(52, 153, 84, 0.25);
+}
+
+.modal-content button {
+
+    padding: 0.75rem;
+    background-color: #1fd589;
+    color: white;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.modal-content button:hover {
+    
+    background-color: #48c426;
+}

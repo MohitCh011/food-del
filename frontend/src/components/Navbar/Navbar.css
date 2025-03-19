@@ -11,15 +11,32 @@
     align-items: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-
+.sign-in {
+    padding: 8px 16px;
+    background-color: #FF8C00; /* Adjust the color as needed */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .sign-in:hover {
+    background-color: #FF7000; /* Slightly darker shade for hover effect */
+  }
+  
 /* Prevent content from being hidden behind the navbar */
 body {
     padding-top: 80px;
 }
 
 .navbar .logo {
-    width: 120px;
+    width: 80px;         /* Reduced from 120px to 80px */
+    height: 60px;        /* Reduced from 80px to 60px */
+    max-width: 15vw;     /* Reduced from 20vw to 15vw */
+    max-height: 8vh;     /* Reduced from 10vh to 8vh */
 }
+
 
 .navbar-menu {
     display: flex;
@@ -58,7 +75,7 @@ body {
     background: transparent;
     font-size: 16px;
     color: #49557E;
-    border: 1px solid #FF4C24;
+    border: 1px solid #15981c;
     padding: 10px 30px;
     border-radius: 50px;
     cursor: pointer;
@@ -66,7 +83,7 @@ body {
 }
 
 .navbar-right button:hover {
-    background: #fff4f2;
+    background: #88e085;
 }
 
 /* Ensuring Admin Login button matches Sign In */
@@ -74,7 +91,7 @@ body {
     background: transparent;
     font-size: 16px;
     color: #49557E;
-    border: 1px solid #FF4C24;
+    border: 1px solid #88e085;
     padding: 10px 30px;
     border-radius: 50px;
     cursor: pointer;
@@ -108,7 +125,7 @@ body {
 }
 
 .navbar-profile-dropdown li:hover {
-    color: #FF4C24;
+    color: #88e085;
 }
 
 .navbar-profile:hover .navbar-profile-dropdown {
@@ -118,7 +135,7 @@ body {
     background-color: #fff2ef;
     padding: 12px 25px;
     border-radius: 4px;
-    border: 1px solid tomato;
+    border: 1px solid rgb(84, 216, 84);
     outline: 2px solid white;
     list-style: none;
 }
@@ -189,5 +206,77 @@ body {
 @media (min-width: 751px) {
     .hamburger {
         display: none;
+    }
+}/* Search Bar Styling */
+.search-container {
+    position: relative;
+}
+
+/* Desktop View */
+.search-box {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    padding: 5px 10px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-box input {
+    padding: 5px 10px;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    width: 150px;
+    transition: width 0.3s ease-in-out;
+}
+
+.search-box button {
+    padding: 5px 10px;
+    margin-left: 5px;
+    border: none;
+    background-color: #88e085;
+    color: white;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+.search-box button:hover {
+    background-color: #88e085;
+}
+
+.search-box input:focus {
+    width: 200px;
+}
+
+/* Mobile View */
+@media (max-width: 750px) {
+    .search-box {
+        position: fixed; /* Keep it visible and easy to use */
+        top: 60px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        border-radius: 20px;
+        z-index: 1000;
+    }
+
+    .search-box input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 20px;
+    }
+
+    .search-box button {
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 }

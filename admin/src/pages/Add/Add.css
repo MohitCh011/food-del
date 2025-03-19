@@ -25,11 +25,16 @@
     max-width: 120px;
     padding: 10px;
 }
-.add-btn{
+.add-btn {
     max-width: 120px;
     border: none;
     padding: 10px;
-    background-color: black;
+    background-color: rgb(141, 215, 154);
     color: white;
     cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.add-btn:hover {
+    background-color: rgb(60, 150, 75); /* Darker shade for hover effect */
 }

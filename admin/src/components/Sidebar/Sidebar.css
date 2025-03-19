@@ -27,10 +27,27 @@
 .sidebar-option img{
     width: 20px;
 }
-.sidebar-option.active {
- background-color: #fff0ed;
- border-color: tomato;
+.sidebar-option {
+    padding: 10px;
+    border: 1px solid transparent;
+    transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
 }
+
+.sidebar-option:hover {
+    background-color: #e0f3e7; /* Light green shade */
+    border-color: #37bb67;
+    cursor: pointer;
+    transform: scale(1.02); /* Slightly enlarges the option on hover */
+}
+
+.sidebar-option.active {
+    background-color: #37bb67;
+    border-color: rgb(77, 188, 97);
+    color: white;
+    transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
+}
+
+
 @media (max-width:900px) {
     .sidebar-option p{
        display: none;

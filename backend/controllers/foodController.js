@@ -1,3 +1,5 @@
+// Backend Code (Updated)
+
 import foodModel from "../models/foodModel.js";
 import fs from 'fs'
 
@@ -10,12 +12,10 @@ const listFood = async (req, res) => {
         console.log(error);
         res.json({ success: false, message: "Error" })
     }
-
 }
 
 // add food
 const addFood = async (req, res) => {
-
     try {
         let image_filename = `${req.file.filename}`
 
@@ -35,10 +35,30 @@ const addFood = async (req, res) => {
     }
 }
 
+// edit food
+const editFood = async (req, res) => {
+    try {
+        const { id, name, description, price, category } = req.body;
+        let updatedData = { name, description, price, category };
+
+        if (req.file) { // Check if a new image is uploaded
+            updatedData.image = req.file.filename;
+        }
+
+        console.log(id);
+        const food = await foodModel.findByIdAndUpdate(id, updatedData, { new: true });
+
+        res.json({ success: true, message: "Food Updated", data: food });
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: "Error" })
+    }
+}
+
+
 // delete food
 const removeFood = async (req, res) => {
     try {
-
         const food = await foodModel.findById(req.body.id);
         fs.unlink(`uploads/${food.image}`, () => { })
 
@@ -49,7 +69,6 @@ const removeFood = async (req, res) => {
         console.log(error);
         res.json({ success: false, message: "Error" })
     }
-
 }
 
-export { listFood, addFood, removeFood }
+export { listFood, addFood, editFood, removeFood }
