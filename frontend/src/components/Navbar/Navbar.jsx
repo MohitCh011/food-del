@@ -1,115 +1,115 @@
-import React, { useContext, useState, useEffect } from 'react';
-import './Navbar.css';
-import { assets } from '../../assets/assets';
-import { Link, useNavigate } from 'react-router-dom';
-import { StoreContext } from '../../Context/StoreContext';
+  import React, { useContext, useState, useEffect } from 'react';
+  import './Navbar.css';
+  import { assets } from '../../assets/assets';
+  import { Link, useNavigate } from 'react-router-dom';
+  import { StoreContext } from '../../Context/StoreContext';
 
-const Navbar = ({ setShowLogin }) => {
-  const [menu, setMenu] = useState("home");
-  const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
-  const navigate = useNavigate();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
+  const Navbar = ({ setShowLogin }) => {
+    const [menu, setMenu] = useState("home");
+    const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
+    const navigate = useNavigate();
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const [searchQuery, setSearchQuery] = useState("");
 
-  const logout = () => {
-    localStorage.removeItem("token");
-    setToken("");
-    navigate('/');
-  };
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      navigate(`/search?query=${searchQuery}`);
-      setSearchQuery("");
-      setIsSearchOpen(false);
-    }
-  };
-
-  useEffect(() => {
-    const handlePopState = () => {
-      if (isSearchOpen) setIsSearchOpen(false);
+    const logout = () => {
+      localStorage.removeItem("token");
+      setToken("");
+      navigate('/');
     };
 
-    window.addEventListener('popstate', handlePopState);
-
-    return () => {
-      window.removeEventListener('popstate', handlePopState);
+    const handleSearch = (e) => {
+      e.preventDefault();
+      if (searchQuery.trim()) {
+        navigate(`/search?query=${searchQuery}`);
+        setSearchQuery("");
+        setIsSearchOpen(false);
+      }
     };
-  }, [isSearchOpen]);
 
-  const scrollToSection = (sectionId) => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
-  };
+    useEffect(() => {
+      const handlePopState = () => {
+        if (isSearchOpen) setIsSearchOpen(false);
+      };
 
-  const handleHomeClick = () => {
-    setMenu("home");
-    setIsMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    navigate('/');
-  };
+      window.addEventListener('popstate', handlePopState);
 
-  return (
-    <div className='navbar'>
-      <Link to='/'><img className='logo' src={assets.logo} alt="Logo" /></Link>
+      return () => {
+        window.removeEventListener('popstate', handlePopState);
+      };
+    }, [isSearchOpen]);
 
-      <div className="hamburger" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-        ☰
-      </div>
+    const scrollToSection = (sectionId) => {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    };
 
-      <ul className={`navbar-menu ${isMobileMenuOpen ? 'show' : ''}`}>
-        <span onClick={handleHomeClick} className={`${menu === "home" ? "active" : ""}`}>home</span>
-        <span onClick={() => { scrollToSection('explore-menu'); setMenu("menu"); setIsMobileMenuOpen(false); }} className={`${menu === "menu" ? "active" : ""}`}>menu</span>
-        <span onClick={() => { scrollToSection('app-download'); setMenu("mob-app"); setIsMobileMenuOpen(false); }} className={`${menu === "mob-app" ? "active" : ""}`}>mobile app</span>
-        <span onClick={() => { scrollToSection('footer'); setMenu("contact"); setIsMobileMenuOpen(false); }} className={`${menu === "contact" ? "active" : ""}`}>contact us</span>
-      </ul>
+    const handleHomeClick = () => {
+      setMenu("home");
+      setIsMobileMenuOpen(false);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      navigate('/');
+    };
 
-      <div className="navbar-right">
-        <div className="search-container">
-          <img 
-            src={assets.search_icon} 
-            alt="Search" 
-            onClick={() => setIsSearchOpen(!isSearchOpen)} 
-            style={{ cursor: 'pointer' }}
-          />
-          {isSearchOpen && (
-            <form onSubmit={handleSearch} className="search-box">
-              <input 
-                type="text" 
-                placeholder="Search foods..." 
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-              <button type="submit">Search</button>
-            </form>
-          )}
+    return (
+      <div className='navbar'>
+        <Link to='/'><img className='logo' src={assets.logo} alt="Logo" /></Link>
+
+        <div className="hamburger" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+          ☰
         </div>
 
-        <Link to='/cart' className='navbar-search-icon'>
-          <img src={assets.basket_icon} alt="Cart" />
-          <div className={getTotalCartAmount() > 0 ? "dot" : ""}></div>
-        </Link>
+        <ul className={`navbar-menu ${isMobileMenuOpen ? 'show' : ''}`}>
+          <span onClick={handleHomeClick} className={`${menu === "home" ? "active" : ""}`}>home</span>
+          <span onClick={() => { scrollToSection('explore-menu'); setMenu("menu"); setIsMobileMenuOpen(false); }} className={`${menu === "menu" ? "active" : ""}`}>menu</span>
+          <span onClick={() => { scrollToSection('app-download'); setMenu("mob-app"); setIsMobileMenuOpen(false); }} className={`${menu === "mob-app" ? "active" : ""}`}>mobile app</span>
+          <span onClick={() => { scrollToSection('footer'); setMenu("contact"); setIsMobileMenuOpen(false); }} className={`${menu === "contact" ? "active" : ""}`}>contact us</span>
+        </ul>
 
-        {!token ? (
-          <button className="sign-in" onClick={() => setShowLogin(true)}>sign in</button>
-        ) : (
-          <div className='navbar-profile'>
-            <img src={assets.profile_icon} alt="Profile" />
-            <ul className='navbar-profile-dropdown'>
-              <li onClick={() => navigate('/myorders')}>
-                <img src={assets.bag_icon} alt="Orders" /> <p>Orders</p>
-              </li>
-              <hr />
-              <li onClick={logout}>
-                <img src={assets.logout_icon} alt="Logout" /> <p>Logout</p>
-              </li>
-            </ul>
+        <div className="navbar-right">
+          <div className="search-container">
+            <img 
+              src={assets.search_icon} 
+              alt="Search" 
+              onClick={() => setIsSearchOpen(!isSearchOpen)} 
+              style={{ cursor: 'pointer' }}
+            />
+            {isSearchOpen && (
+              <form onSubmit={handleSearch} className="search-box">
+                <input 
+                  type="text" 
+                  placeholder="Search foods..." 
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+                <button type="submit">Search</button>
+              </form>
+            )}
           </div>
-        )}
-      </div>
-    </div>
-  );
-};
 
-export default Navbar;
+          <Link to='/cart' className='navbar-search-icon'>
+            <img src={assets.basket_icon} alt="Cart" />
+            <div className={getTotalCartAmount() > 0 ? "dot" : ""}></div>
+          </Link>
+
+          {!token ? (
+            <button className="sign-in" onClick={() => setShowLogin(true)}>sign in</button>
+          ) : (
+            <div className='navbar-profile'>
+              <img src={assets.profile_icon} alt="Profile" />
+              <ul className='navbar-profile-dropdown'>
+                <li onClick={() => navigate('/myorders')}>
+                  <img src={assets.bag_icon} alt="Orders" /> <p>Orders</p>
+                </li>
+                <hr />
+                <li onClick={logout}>
+                  <img src={assets.logout_icon} alt="Logout" /> <p>Logout</p>
+                </li>
+              </ul>
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  };
+
+  export default Navbar;
